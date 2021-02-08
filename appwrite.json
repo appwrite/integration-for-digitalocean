@@ -1,14 +1,13 @@
 {
     "variables": {
       "token": "{{env `DIGITALOCEAN_TOKEN`}}",
-      "image_name": "appwrite-snapshot-{{timestamp}}",
-      "apt_packages": "curl"
+      "image_name": "appwrite-snapshot-{{timestamp}}"
     },
     "builders": [
       {
         "type": "digitalocean",
         "api_token": "{{user `token`}}",
-        "image": "ubuntu-20-04-x64",
+        "image": "ubuntu-18-04-x64",
         "region": "nyc3",
         "size": "s-1vcpu-2gb",
         "ssh_username": "root",
@@ -29,20 +28,20 @@
       },
       {
         "type": "file",
-        "source": "files/var/",
-        "destination": "/var/"
+        "source": "files/opt/",
+        "destination": "/opt/"
       },
       {
         "type": "shell",
         "inline": [
           "apt -qqy update",
-          "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' full-upgrade",
-          "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' install {{user `apt_packages`}}"
+          "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' full-upgrade"
         ]
       },
       {
         "type": "shell",
         "scripts": [
+          "scripts/01-setup-appwrite-scripts.sh",
           "scripts/02-docker-install.sh",
           "scripts/03-docker-test.sh",
           "scripts/90-cleanup.sh",

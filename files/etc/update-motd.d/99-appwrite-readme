@@ -11,5 +11,5 @@ Welcome to Appwrite. Appwrite is a self-hosted solution that provides developers
 More information on : https://appwrite.io/
 
 ********************************************************************************
-To delete this message of the day: rm -rf $(readlink -f ${0})
+
 EOF
