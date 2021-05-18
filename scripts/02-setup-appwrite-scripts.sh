@@ -6,18 +6,15 @@ echo "==============================================="
 chmod +x /var/lib/cloud/scripts/per-instance/01-run-appwrite.sh /etc/update-motd.d/99-appwrite-readme
 
 echo "==============================================="
-echo "=             Installing Appwrite             ="
+echo "=             Pulling docker images             ="
 echo "==============================================="
 
-cd /root
+echo "pulling appwrite docker images"
 
-echo "installing appwrite at: $(pwd)/appwrite"
+docker pull dlohani/appwrite:0.8.0
+docker pull traefik:2.3
+docker pull appwrite/mariadb:1.2.0
+docker pull redis:6.0-alpine3.12
+docker pull influxdb:1.8-alpine
+docker pull appwrite/telegraf:1.0.0
 
-docker run -it --rm \
-    --volume /var/run/docker.sock:/var/run/docker.sock \
-    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
-    dlohani/appwrite:0.8.0 sh -c "install --httpPort=80 --hhtpsPort=443 --interactive=N --organization=dlohani"
-
-cd appwrite
-docker-compose down --remove
-docker volume prune
