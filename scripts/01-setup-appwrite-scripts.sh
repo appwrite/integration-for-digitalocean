@@ -16,8 +16,7 @@ echo "installing appwrite at: $(pwd)/appwrite"
 docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
-    --entrypoint="install" \
-    appwrite/appwrite:0.8.0
+    appwrite/appwrite:0.8.0 sh -c "install --httpPort=80 --hhtpsPort=443 --interactive=N"
 
 cd appwrite
 docker-compose down --remove
