@@ -6,9 +6,27 @@ myip=$(hostname -I | awk '{print$1}')
 cat <<EOF
 ********************************************************************************
 
-Welcome to Appwrite. Appwrite is a self-hosted solution that provides developers with a set of easy-to-use and integrate REST APIs to manage their core backend needs.
+  __   ____  ____  _  _  ____  __  ____  ____     __  __  
+ / _\ (  _ \(  _ \/ )( \(  _ \(  )(_  _)(  __)   (  )/  \ 
+/    \ ) __/ ) __/\ /\ / )   / )(   )(   ) _)  _  )((  O )
+\_/\_/(__)  (__)  (_/\_)(__\_)(__) (__) (____)(_)(__)\__/ 
 
-More information on : https://appwrite.io/
+Welcome to Appwrite!
+Appwrite is a self-hosted solution that provides developers with a set of easy-to-use and integrate REST APIs to manage their core backend needs.
+
+Access your Appwrite console at http://${myip} or any domain you have assigned.
+
+Access using https://<your_domain> and accept the self signed certificate or http://<your_domain>,
+so that our certificates worker can generate a valid SSL certificates within seconds.
+
+More information on:
+Website: https://appwrite.io/
+Docs: https://appwrite.io/docs
+https://appwrite.io/discord
+
+
+You can find your Appwrite installation at `/root/appwrite`
+You can find all the environment variables and their values in `/root/appwrite/.env`
 
 ********************************************************************************
 

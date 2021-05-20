@@ -9,19 +9,19 @@ echo "==============================================="
 echo "=             Pulling docker images             ="
 echo "==============================================="
 
-docker pull dlohani/appwrite:0.8.0
+docker pull appwrite/appwrite:0.8.0
 docker pull traefik:2.3
 docker pull appwrite/mariadb:1.2.0
 docker pull redis:6.0-alpine3.12
-docker pull influxdb:1.8-alpine
-docker pull appwrite/telegraf:1.0.0
+docker pull appwrite/influxdb:1.0.0
+docker pull appwrite/telegraf:1.1.0
 
 
 echo "==============================================="
 echo "=             Setting up Swap                 ="
 echo "==============================================="
 
-fallocate -l 2G /swapfile
+fallocate -l 1G /swapfile
 ls -lh /swapfile
 
 chmod 600 /swapfile

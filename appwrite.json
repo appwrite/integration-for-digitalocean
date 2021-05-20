@@ -35,7 +35,10 @@
 			"scripts": [
 				"scripts/01-docker-install.sh",
 				"scripts/02-setup-appwrite-scripts.sh",
-				"scripts/03-docker-test.sh"
+				"scripts/03-docker-test.sh",
+				"scripts/04-ufw-appwrite.sh",
+				"scripts/90-cleanup.sh",
+				"scripts/99-image_check.sh"
 			]
 		}
 	]
