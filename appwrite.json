@@ -1,52 +1,66 @@
 {
-    "variables": {
-      "token": "{{env `DIGITALOCEAN_TOKEN`}}",
-      "image_name": "appwrite-snapshot-{{timestamp}}"
-    },
-    "builders": [
-      {
-        "type": "digitalocean",
-        "api_token": "{{user `token`}}",
-        "image": "ubuntu-18-04-x64",
-        "region": "nyc3",
-        "size": "s-1vcpu-2gb",
-        "ssh_username": "root",
-        "snapshot_name": "{{user `image_name`}}"
-      }
-    ],
-    "provisioners": [
-      {
-        "type": "shell",
-        "inline": [
-          "cloud-init status --wait"
-        ]
-      },
-      {
-        "type": "file",
-        "source": "files/etc/",
-        "destination": "/etc/"
-      },
-      {
-        "type": "file",
-        "source": "files/opt/",
-        "destination": "/opt/"
-      },
-      {
-        "type": "shell",
-        "inline": [
-          "apt -qqy update",
-          "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' full-upgrade"
-        ]
-      },
-      {
-        "type": "shell",
-        "scripts": [
-          "scripts/01-setup-appwrite-scripts.sh",
-          "scripts/02-docker-install.sh",
-          "scripts/03-docker-test.sh",
-          "scripts/90-cleanup.sh",
-          "scripts/99-image_check.sh"
-        ]
-      }
-    ]
-  }
+	"variables": {
+		"token": "{{env `DIGITALOCEAN_TOKEN`}}",
+		"image_name": "appwrite-0.8.0-snapshot-{{timestamp}}"
+	},
+	"sensitive-variables": [ "token" ],
+	"builders": [
+		{
+			"type": "digitalocean",
+			"api_token": "{{user `token`}}",
+			"image": "ubuntu-20-04-x64",
+			"region": "nyc3",
+			"size": "s-1vcpu-1gb",
+			"ssh_username": "root",
+			"snapshot_name": "{{user `image_name`}}"
+		}
+	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"inline": [ "cloud-init status --wait" ]
+		},
+		{
+			"type": "file",
+			"source": "files/etc/",
+			"destination": "/etc/"
+		},
+		{
+			"type": "file",
+			"source": "files/var/",
+			"destination": "/var/"
+		},
+		{
+			"type": "shell",
+			"environment_vars": [
+				"DEBIAN_FRONTEND=noninteractive",
+				"LC_ALL=C",
+				"LANG=en_US.UTF-8",
+				"LC_CTYPE=en_US.UTF-8"
+			],
+			"inline": [
+				"apt -qqy update",
+				"apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' full-upgrade",
+				"apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' install {{user `apt_packages`}}",
+				"apt-get -qqy clean"
+			]
+		},
+		{
+			"type": "shell",
+			"environment_vars": [
+				"DEBIAN_FRONTEND=noninteractive",
+				"LC_ALL=C",
+				"LANG=en_US.UTF-8",
+				"LC_CTYPE=en_US.UTF-8"
+			],
+			"scripts": [
+				"scripts/01-docker-install.sh",
+				"scripts/02-setup-appwrite-scripts.sh",
+				"scripts/03-docker-test.sh",
+				"scripts/04-ufw-appwrite.sh",
+				"scripts/90-cleanup.sh",
+				"scripts/99-image_check.sh"
+			]
+		}
+	]
+}
