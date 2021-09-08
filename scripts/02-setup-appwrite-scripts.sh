@@ -9,7 +9,7 @@ echo "==============================================="
 echo "=             Pulling docker images             ="
 echo "==============================================="
 
-docker pull appwrite/appwrite:0.10.0
+docker pull appwrite/appwrite:0.10.2
 docker pull traefik:2.5
 docker pull appwrite/mariadb:1.2.0
 docker pull redis:6.0-alpine3.12
