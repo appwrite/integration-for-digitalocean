@@ -42,7 +42,7 @@
 				"apt -qqy update",
 				"apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' full-upgrade",
 				"apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' install {{user `apt_packages`}}",
-				"apt-get install haveged",
+				"apt-get install -y haveged",
 				"apt-get -qqy clean"
 			]
 		},
