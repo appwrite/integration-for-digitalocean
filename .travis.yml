@@ -5,6 +5,8 @@ arch:
 
 os: linux
 
+language: generic
+
 notifications:
   email:
     - team@appwrite.io
