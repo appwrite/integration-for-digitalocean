@@ -1,6 +1,8 @@
 # Integration for Digitalocean
 
-This repository is an Appwrite integration for Digitalocean marketplace 1-click app.
+This repository is an  [Appwrite](https://appwrite.io/) integration for [DigitalOcean marketplace](https://www.digitalocean.com/products/marketplace) 1-click app.
+
+[Deploy Now](https://marketplace.digitalocean.com/apps/appwrite?refcode=5f0f79e89242&action=deploy)
 
 ## Building
 
