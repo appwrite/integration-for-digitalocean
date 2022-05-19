@@ -1,7 +1,7 @@
 {
 	"variables": {
 		"token": "{{env `DIGITALOCEAN_TOKEN`}}",
-		"image_name": "appwrite-0.13.4-snapshot-{{timestamp}}"
+		"image_name": "appwrite-0.14-snapshot-{{timestamp}}"
 	},
 	"sensitive-variables": [ "token" ],
 	"builders": [
