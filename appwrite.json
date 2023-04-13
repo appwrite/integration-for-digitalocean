@@ -1,14 +1,14 @@
 {
 	"variables": {
 		"token": "{{env `DIGITALOCEAN_TOKEN`}}",
-		"image_name": "appwrite-1.2.1-snapshot-{{timestamp}}"
+		"image_name": "appwrite-1.3-snapshot-{{timestamp}}"
 	},
 	"sensitive-variables": [ "token" ],
 	"builders": [
 		{
 			"type": "digitalocean",
 			"api_token": "{{user `token`}}",
-			"image": "ubuntu-20-04-x64",
+			"image": "ubuntu-22-04-x64",
 			"region": "nyc3",
 			"size": "s-1vcpu-1gb",
 			"ssh_username": "root",
