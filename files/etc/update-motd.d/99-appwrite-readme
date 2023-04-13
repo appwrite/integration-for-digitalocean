@@ -12,7 +12,7 @@ cat <<EOF
 \_/\_/(__)  (__)  (_/\_)(__\_)(__) (__) (____)(_)(__)\__/ 
 
 Welcome to Appwrite!
-Appwrite is a self-hosted solution that provides developers with a set of easy-to-use and integrate REST APIs to manage their core backend needs. Now introduced with new Realtime service. More info at https://appwrite.io/docs/realtime 
+Appwrite is a self-hosted solution that provides developers with a set of easy-to-use and integrate REST APIs to manage their core backend needs.
 
 Access your Appwrite console at http://${myip} or any domain you have assigned.
 

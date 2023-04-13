@@ -2,6 +2,8 @@
 
 cd /root
 
+docker pull appwrite/appwrite:1.3
+
 docker run --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
