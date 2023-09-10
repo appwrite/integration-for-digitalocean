@@ -12,4 +12,4 @@ echo "==============================================="
 docker run --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
-    appwrite/appwrite:$appversion sh -c "install --httpPort=80 --httpsPort=443 --interactive=N"
+    appwrite/appwrite:latest sh -c "install --httpPort=80 --httpsPort=443 --interactive=N"
